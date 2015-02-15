@@ -275,7 +275,7 @@
         this.sumFive = this.payPerFive * this.personSumFive;
         this.sumSix = this.payPerSix * this.personSumSix;
         this.personSum = parseInt(this.personSumOne) + parseInt(this.personSumTwo) + parseInt(this.personSumThree) + parseInt(this.personSumFour) + parseInt(this.personSumFive) + parseInt(this.personSumSix);
-        this.sum = this.personSum * this.payPerPerson + parseInt(this.alpha);
+        this.sum = parseInt(this.personSum) * parseInt(this.payPerPerson) + parseInt(this.alpha);
         this.givenSum = this.sumOne + this.sumTwo + this.sumThree + this.sumFour + this.sumFive + this.sumSix;
         this.diff = this.sum - this.givenSum;
       }
