@@ -1,0 +1,287 @@
+<link rel="import" href="./bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="./bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="./bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="./bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="./bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="./bower_components/core-pages/core-pages.html">
+<link rel="import" href="./bower_components/paper-calculator/paper-calculator.html">
+<link rel="import" href="./bower_components/paper-input/paper-input.html">
+<link rel="import" href="./bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="./bower_components/paper-input/paper-input-decorator.html">
+
+<!-- <link rel="import" href="./generation.html"> -->
+
+<polymer-element name="my-calculator">
+
+  <template>
+    <style>    
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #container {
+        padding: 24px;
+      }
+      section {
+        padding: 20px 0;
+      }
+
+      section > div {
+        /*position: relative;*/
+        padding: 14px;
+        font-size: 16px;
+        float: none;
+      }
+
+      section div div core-icon {
+        margin-bottom: 10px;
+      }
+      section div div div {
+        margin-bottom: 10px;
+      }
+
+      paper-input-decorator {
+        max-width: 30%;
+        display: inline;
+      }
+    </style>
+
+    <div id="container">
+      <section>
+
+        <div layout horizontal>
+          <paper-input-decorator label="一人分" floatingLabel>
+            <input value="{{payPerPerson}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div style="font-size:0.65em;color:gray;">合計人数</div>
+            <div>{{personSum}}</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＋　</div>
+          </div>
+          <paper-input-decorator label="その他" floatingLabel>
+            <input value="{{alpha}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div style="font-size:0.65em;color:gray;">合計金額</div>
+            <div>{{sum}}</div>
+          </div>
+        </div>
+        
+        <hr>
+
+        <div layout horizontal>
+          <paper-input-decorator label="1年生一人分" floatingLabel>
+            <input value="{{payPerOne}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <paper-input-decorator label="1年生の人数" floatingLabel>
+            <input value="{{personSumOne}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>{{sumOne}}</div>
+          </div>
+        </div>
+
+        <div layout horizontal>
+          <paper-input-decorator label="2年生一人分" floatingLabel>
+            <input value="{{payPerTwo}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <paper-input-decorator label="2年生の人数" floatingLabel>
+            <input value="{{personSumTwo}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>{{sumTwo}}</div>
+          </div>
+        </div>
+
+        <div layout horizontal>
+          <paper-input-decorator label="3年生一人分" floatingLabel>
+            <input value="{{payPerThree}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <paper-input-decorator label="3年生の人数" floatingLabel>
+            <input value="{{personSumThree}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>{{sumThree}}</div>
+          </div>
+        </div>
+
+        <div layout horizontal>
+          <paper-input-decorator label="4年生一人分" floatingLabel>
+            <input value="{{payPerFour}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <paper-input-decorator label="4年生の人数" floatingLabel>
+            <input value="{{personSumFour}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>{{sumFour}}</div>
+          </div>
+        </div>
+
+        <div layout horizontal>
+          <paper-input-decorator label="5年生一人分" floatingLabel>
+            <input value="{{payPerFive}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <paper-input-decorator label="5年生の人数" floatingLabel>
+            <input value="{{personSumFive}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>{{sumFive}}</div>
+          </div>
+        </div>
+
+        <div layout horizontal>
+          <paper-input-decorator label="6年生一人分" floatingLabel>
+            <input value="{{payPerSix}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　×　</div>
+          </div>
+          <paper-input-decorator label="6年生の人数" floatingLabel>
+            <input value="{{personSumSix}}" is="core-input">
+          </paper-input-decorator>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>{{sumSix}}</div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div layout horizontal>
+          <div layout vertical>
+            <div flex></div>
+            <div>支払い合計金額</div>
+            <div>{{sum}}</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>　ー　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>徴収合計金額</div>
+            <div>{{givenSum}}</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>　＝　</div>
+          </div>
+          <div layout vertical>
+            <div flex></div>
+            <div>差額</div>
+            <div>{{diff}}</div>
+          </div>
+        </div>
+
+
+      </section>
+    </div>
+    
+  </template>
+
+  <script>
+
+    Polymer({
+
+      alpha: 0,
+
+      observe: {
+        "payPerPerson": "update",
+        "alpha": "update",
+        "payPerOne": "update",
+        "personSumOne": "update",
+        "payPerTwo": "update",
+        "personSumTwo": "update",
+        "payPerThree": "update",
+        "personSumThree": "update",
+        "payPerFour": "update",
+        "personSumFour": "update",
+        "payPerFive": "update",
+        "personSumFive": "update",
+        "payPerSix": "update",
+        "personSumSix": "update",
+      },
+
+      update: function () {
+        this.sumOne = this.payPerOne * this.personSumOne;
+        this.sumTwo = this.payPerTwo * this.personSumTwo;
+        this.sumThree = this.payPerThree * this.personSumThree;
+        this.sumFour = this.payPerFour * this.personSumFour;
+        this.sumFive = this.payPerFive * this.personSumFive;
+        this.sumSix = this.payPerSix * this.personSumSix;
+        this.personSum = parseInt(this.personSumOne) + parseInt(this.personSumTwo) + parseInt(this.personSumThree) + parseInt(this.personSumFour) + parseInt(this.personSumFive) + parseInt(this.personSumSix);
+        this.sum = parseInt(this.personSum) * parseInt(this.payPerPerson) + parseInt(this.alpha);
+        this.givenSum = this.sumOne + this.sumTwo + this.sumThree + this.sumFour + this.sumFive + this.sumSix;
+        this.diff = this.sum - this.givenSum;
+      }
+      
+    });
+
+  </script>
+
+</polymer-element>
